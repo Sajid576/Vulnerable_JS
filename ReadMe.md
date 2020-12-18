@@ -24,3 +24,5 @@ Your server should be available at  **localhost:5000** .... :)
 - https://www.npmjs.com/package/oracle-client
 - https://www.npmjs.com/package/mssql
 - https://www.npmjs.com/package/mysql
+- https://www.youtube.com/watch?v=eIjbSH3Imb8&t=179s
+
