@@ -13,9 +13,15 @@
   "dependencies": {
     "express": "^4.17.1",
     "http": "0.0.1-security",
+    "mongoose": "^5.11.8",
     "morgan": "^1.10.0",
+<<<<<<< HEAD
     "oracle-client": "^1.1.0",
     "path": "^0.12.7",
     "socket.io-client": "^3.0.4"
+=======
+    "mysql": "^2.18.1",
+    "path": "^0.12.7"
+>>>>>>> 7133fbf7bece1a101a2300f219e3fad0dfdbb903
   }
 }
