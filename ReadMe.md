@@ -4,9 +4,11 @@
 ## Plan:
 <img width="946" alt="plan" src="https://user-images.githubusercontent.com/36130772/102591096-ae6a2580-413b-11eb-8561-7765b6c16f25.png">
 
-database-1=postgreSQL
-database-2=MongoDB
-database-3=CSV
+Database-1=postgreSQL
+
+Database-2=MongoDB
+
+Database-3=CSV
 
 
 ## Project Installation
