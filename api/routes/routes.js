@@ -1,10 +1,15 @@
 
 const contactApiRoute=require('./contactApiRoute');
+const productApiRoute=require('./productApiRoute');
 
 const routes=[
     {
         path:'/contactAPI', 
         handler: contactApiRoute
+    },
+    {
+        path:'/productAPI', 
+        handler: productApiRoute
     },
     {
         path: '/',

@@ -1,4 +1,4 @@
-//const ContactModel=require('../model/DbModel/ContactModel');
+//const ContactModel=require('../model/ContactModel');
 
 
 //used to store a new contact data into the table

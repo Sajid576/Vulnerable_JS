@@ -15,9 +15,10 @@
     "http": "0.0.1-security",
     "mongoose": "^5.11.8",
     "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
     "oracle-client": "^1.1.0",
     "path": "^0.12.7",
-    "socket.io-client": "^3.0.4",
-    "mysql": "^2.18.1"
+    "pg": "^8.5.1",
+    "socket.io-client": "^3.0.4"
   }
 }
