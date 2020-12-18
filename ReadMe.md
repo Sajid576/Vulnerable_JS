@@ -1,6 +1,8 @@
 ## Project Structure:
 **MSSQL** , **MongoDB**  and **MYSQL** - these 3  databases are used for implementing materialized view.
 
+## Plan:
+<img width="946" alt="plan" src="https://user-images.githubusercontent.com/36130772/102591096-ae6a2580-413b-11eb-8561-7765b6c16f25.png">
 
 
 
