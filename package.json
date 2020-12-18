@@ -14,6 +14,8 @@
     "express": "^4.17.1",
     "http": "0.0.1-security",
     "morgan": "^1.10.0",
-    "path": "^0.12.7"
+    "oracle-client": "^1.1.0",
+    "path": "^0.12.7",
+    "socket.io-client": "^3.0.4"
   }
 }
