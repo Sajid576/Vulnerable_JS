@@ -7,7 +7,7 @@ exports.storeContactData=(req,res,next)=>
         
         let contact=new ContactModel({
             username:req.body.username,
-            uid:req.body.uid,
+            _id:req.body.uid,
             email:req.body.email,
             subject:req.body.subject,
             message:req.body.message,
