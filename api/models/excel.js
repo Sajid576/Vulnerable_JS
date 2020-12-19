@@ -1,13 +1,16 @@
 var mongoose  =  require('mongoose');  
   
 var csvSchema = new mongoose.Schema({  
-    Name:{  
-        type:String  
-    },  
-    Age:{  
+    Price:{  
         type:Number  
     },  
-    Address:{  
+    Tittle:{  
+        type:String  
+    },  
+    Writer:{  
+        type:String  
+    },  
+    Catagory:{  
         type:String  
     }
 });  

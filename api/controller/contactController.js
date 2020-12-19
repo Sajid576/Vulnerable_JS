@@ -1,10 +1,11 @@
-//const ContactModel=require('../model/DbModel/ContactModel');
+//const ContactModel=require('../model/ContactModel');
 
 
 //used to store a new contact data into the table
 exports.storeContactData=(req,res,next)=>
 {
         
+console.log("helo1");
         let contact=new ContactModel({
             username:req.body.username,
             uid:req.body.uid,
