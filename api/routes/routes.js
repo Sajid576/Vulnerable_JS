@@ -1,7 +1,7 @@
 
 const contactApiRoute=require('./contactApiRoute');
 const productApiRoute=require('./productApiRoute');
-
+const bookApiRoute = require('./bookApiRoute')
 const routes=[
     {
         path:'/contactAPI', 
@@ -10,6 +10,10 @@ const routes=[
     {
         path:'/productAPI', 
         handler: productApiRoute
+    },
+    {
+        path:'/bookAPI', 
+        handler: bookApiRoute
     },
     {
         path: '/',
