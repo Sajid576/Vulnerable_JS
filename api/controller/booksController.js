@@ -2,7 +2,6 @@ const Book = require('../model/Book')
 var csv = require('csvtojson'); 
 
 exports.addBook = (req, res) => {
-    
     let { title, writer, category, price } = req.body
 
     let book = new Book({
@@ -16,6 +15,7 @@ exports.addBook = (req, res) => {
 
             
             res.json(b)
+            console.log(b)
         })
         .catch(e => {
             console.log(e)
@@ -43,10 +43,16 @@ exports.getAllBooks = (req, res) => {
 
 exports.addExcelData=(req,res)=>
 {
+    
     csv()
     .fromFile("Excel.csv")
     .then(jsonObj=>{
         res.json(jsonObj);
+        // let { title, writer, category, price } = jsonObj[0]
+        // let book = new Book({
+        //     title, writer, category, price
+        // })
+        
         Book.insertMany(jsonObj,(err,data)=>{  
                 if(err){  
                     console.log(err);  
@@ -54,6 +60,17 @@ exports.addExcelData=(req,res)=>
                     console.log(data); 
                 }  
          }); 
+    //     book.save()
+    //     .then(b => {
+    //         res.json(b)
+    //         console.log(b)
+    //     })
+    //     .catch(e => {
+    //         console.log(e)
+    //         res.json({
+    //             message:'Error occured!'
+    //         })
+    // })
     })
         .catch(e => {
         console.log(e)
