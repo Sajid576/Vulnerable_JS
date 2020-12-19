@@ -1,21 +1,16 @@
 
 const contactApiRoute=require('./contactApiRoute');
-const productApiRoute=require('./productApiRoute');
-const excelApiRoute=require('./excelApiRoute');
-
+//const excelApiRoute=require('./excelApiRoute');
+const bookApiRoute = require('./bookApiRoute');
 const routes=[
     {
         path:'/contactAPI', 
         handler: contactApiRoute
     },
     {
-        path:'/productAPI', 
-        handler: productApiRoute
+        path:'/bookAPI', 
+        handler: bookApiRoute
     },
-    // {
-    //     path:'/excelAPI', 
-    //     handler: excelApiRoute
-    // },
     {
         path: '/',
         handler:(req,res)=>{
@@ -27,7 +22,7 @@ const routes=[
 ]
 
 module.exports = (app) => {
-    app.use(excelApiRoute)
+    //app.use(excelApiRoute)
         routes.forEach(r =>{
             app.use(r.path,r.handler)
         })

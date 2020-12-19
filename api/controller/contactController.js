@@ -5,7 +5,6 @@
 exports.storeContactData=(req,res,next)=>
 {
         
-console.log("helo1");
         let contact=new ContactModel({
             username:req.body.username,
             uid:req.body.uid,

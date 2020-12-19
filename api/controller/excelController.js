@@ -1,11 +1,8 @@
 var csv = require('csvtojson'); 
-var csvModel = require('../models/excel'); 
+var csvModel = require('../model/excel'); 
 
-exports.storeExcelData=()=>
+exports.excelStoreData=(req,res)=>
 {
-    //const Csv=require('csvtojson')
-
-    console.log("helo2");
     csv()
     .fromFile("Excel.csv")
     .then((jsonObj)=>{

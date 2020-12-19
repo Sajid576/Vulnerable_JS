@@ -1,10 +1,9 @@
 const express = require('express');
 const router  = express.Router();
 
-const excelController=require('../controller/excelController');
+const excelStoreController=require('../controller/excelController');
 
-router.post('/storeExcelData',excelController.storeExcelData);
-
-//router.get('/getAllUserContactData',contactController.getAllContactData);
+router.post(excelStoreController.excelStoreData);
 
 module.exports=router;
+

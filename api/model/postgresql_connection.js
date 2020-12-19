@@ -5,13 +5,15 @@ const pool = new Pool({
   connectionString,
 })
 
-module.exports = pool;
 
+/*
+pool.query('Select * From contact', function(err, result, fields) {
+    if(err) {
+      return console.error('error running query', err);
+    }
+    console.log(result['rows']);
+    
+  });
+*/
 
-
-
-
-
-
-
-
+  module.exports = pool;
