@@ -63,18 +63,18 @@ mongo.mongoose
         console.log(e)
     })
 
-var csvModel = require('./api/model/excel'); 
+// var csvModel = require('./api/model/excel'); 
 
-var csv = require('csvtojson');  
-csv()
-.fromFile("Excel.csv")
-.then((jsonObj)=>{
-    console.log(jsonObj);
-    csvModel.insertMany(jsonObj,(err,data)=>{  
-            if(err){  
-                console.log(err);  
-            }else{  
-                console.log(data); 
-            }  
-     }); 
-});
+// var csv = require('csvtojson');  
+// csv()
+// .fromFile("Excel.csv")
+// .then((jsonObj)=>{
+//     console.log(jsonObj);
+//     csvModel.insertMany(jsonObj,(err,data)=>{  
+//             if(err){  
+//                 console.log(err);  
+//             }else{  
+//                 console.log(data); 
+//             }  
+//      }); 
+// });
