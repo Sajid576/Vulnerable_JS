@@ -7,11 +7,10 @@ const pool = new Pool({
 
 module.exports = pool;
 
-
-
-
-
-
-
-
-
+pool.query('Select * From contact', function(err, result, fields) {
+    if(err) {
+      return console.error('error running query', err);
+    }
+    return console.log(result);
+    pool.end();
+  });

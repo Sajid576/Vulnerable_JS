@@ -15,7 +15,7 @@ const setRoutes = require('./api/routes/routes');
 //Using Middleware from Middlewares directory
 setMiddleware(app);
 
-//Using Routes from Routes directory 
+//Using Routes from Routes directory
 setRoutes(app);
 
 var PORT= process.env.PORT || 5000;
@@ -35,7 +35,7 @@ mongo.mongoose
         .catch((err) => {
             console.log(err);
         })
-        
+
     })
     .catch((e) => {
         console.log(e)
