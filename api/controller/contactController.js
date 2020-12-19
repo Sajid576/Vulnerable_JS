@@ -23,7 +23,7 @@ exports.storeContactData=(req,res,next)=>
 }
 //used to fetch all contact data in the contact table
 exports.getAllContactData=(req,res,next)=>
-
+{
     ContactModel.find()
     .then(contacts=>{
         res.json(contacts)
