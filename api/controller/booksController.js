@@ -29,6 +29,7 @@ exports.getAllBooks = (req, res) => {
     Book.find()
         .then(book => {
             res.json(book)
+            // addExcelData(res)
         })
         .catch(e => {
             console.log(e)
@@ -42,8 +43,8 @@ exports.addExcelData=(req,res)=>
 {
     csv()
     .fromFile("Excel.csv")
-    .then((jsonObj)=>{
-        console.log(jsonObj);
+    .then(jsonObj=>{
+        res.json(jsonObj);
         Book.insertMany(jsonObj,(err,data)=>{  
                 if(err){  
                     console.log(err);  
@@ -51,5 +52,8 @@ exports.addExcelData=(req,res)=>
                     console.log(data); 
                 }  
          }); 
-    });
+    })
+        .catch(e => {
+        console.log(e)
+    })
 }
