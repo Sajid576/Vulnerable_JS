@@ -1,10 +1,6 @@
-//const ContactModel=require('../model/ContactModel');
-
-
-//used to store a new contact data into the table
 exports.storeContactData=(req,res,next)=>
 {
-        
+
         let contact=new ContactModel({
             username:req.body.username,
             uid:req.body.uid,
@@ -13,6 +9,8 @@ exports.storeContactData=(req,res,next)=>
             message:req.body.message,
             createdAt:Date.now(),
         });
+        //contactObj= new contactData.ContactModel();
+
         contact.save().then((data)=>{
             res.status(200).json({
                 data
@@ -25,7 +23,7 @@ exports.storeContactData=(req,res,next)=>
 }
 //used to fetch all contact data in the contact table
 exports.getAllContactData=(req,res,next)=>
-{
+
     ContactModel.find()
     .then(contacts=>{
         res.json(contacts)
@@ -34,4 +32,3 @@ exports.getAllContactData=(req,res,next)=>
         res.json(e.message);
     })
 }
-
