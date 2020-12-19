@@ -7,7 +7,7 @@ const contactController=require('../controller/contactController');
 
 router.post('/storeUserContactData',contactController.storeContactData);
 
-router.get('/getAllUserContactData',contactController.getAllContactData);
+router.get('/getAllUserContactData/:num',contactController.getAllContactData);
 
 
 

@@ -2,7 +2,7 @@ const Book = require('../model/Book')
 var csv = require('csvtojson'); 
 
 exports.addBook = (req, res) => {
-    console.log('sfsfsfsf')
+    
     let { title, writer, category, price } = req.body
 
     let book = new Book({
@@ -13,6 +13,8 @@ exports.addBook = (req, res) => {
 
     book.save()
         .then(b => {
+
+            
             res.json(b)
         })
         .catch(e => {
