@@ -1,4 +1,5 @@
 const Book = require('../model/Book')
+var csv = require('csvtojson'); 
 
 exports.addBook = (req, res) => {
     console.log('sfsfsfsf')
@@ -35,4 +36,20 @@ exports.getAllBooks = (req, res) => {
                 message: 'Error Occurred'
             })
         })
+}
+
+exports.addExcelData=(req,res)=>
+{
+    csv()
+    .fromFile("Excel.csv")
+    .then((jsonObj)=>{
+        console.log(jsonObj);
+        Book.insertMany(jsonObj,(err,data)=>{  
+                if(err){  
+                    console.log(err);  
+                }else{  
+                    console.log(data); 
+                }  
+         }); 
+    });
 }
