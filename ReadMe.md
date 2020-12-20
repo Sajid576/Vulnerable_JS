@@ -40,6 +40,7 @@ Request Json Object:
         email(string): email of contact
         subject(string): subject of contact
         message(string): message of contact
+        num(Number): it denotes id of the database(1==postgresql , 2==mongodb)
 
 Response Json Object:
         _id(ObjectId): unique id of the  contact user
@@ -51,9 +52,11 @@ Response Json Object:
 
 2) Get all contact information:
 ```
-GET  /contactAPI/getAllUserContactData
+GET  /contactAPI/getAllUserContactData/(Number:num)
 ```
-```
+*num* denotes id of the database(1==postgresql , 2==mongodb)
+ ```
+
 Response list of Json Object:
         _id(ObjectId): unique id of the  contact user
         username(string): username of the contact
