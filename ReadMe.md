@@ -68,7 +68,7 @@ Response list of Json Object:
 
 ##### Book API:
 
-1) Add new book to the database:
+1) Add new book to the database and excel:
 ```
  POST /bookAPI/addNewBook
 ```
@@ -101,7 +101,20 @@ Response list of Json objects:
 
 
 ```
+3) Add updated Excel rows to the database:
+```
+GET  /bookAPI/addExcelData
+```
+```
+Response list of Json objects:
+        _id(ObjectId): Book ID
+        title(string): Title of the book
+        writer(string): Author of the book
+        category(string): Category of the book
+        price(string): Price of the book
 
+
+```
 
 ## References:
 - [Elephant SQL website for hosting postgresql database](https://api.elephantsql.com/console/3f6ad4f0-8f78-49d4-9ff7-651a1d885eba/details)
