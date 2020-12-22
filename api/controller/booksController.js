@@ -1,11 +1,12 @@
 const Book = require('../model/Book')
 var csv = require('csvtojson');
 var fs = require('fs');
-var { parse } = require('json2csv');
+//var { parse } = require('json2csv');
 //const json2csv = require('json2csv').parse;
 var newLine = '\r\n';
 var fields = ['title', 'writer', 'category', 'price'];
-const opts = { fields };
+//var fields = [, , , ];
+//const opts = { fields };
 
 
 exports.addBook = (req, res) => {
@@ -28,12 +29,16 @@ exports.addBook = (req, res) => {
         })
 
     fs.stat('Excel.csv', function (err, stat) {
-        try {
-            var Csv = parse(book,opts) + newLine;
-            fs.appendFile('Excel.csv', Csv, function (err) {});
-        } catch (err) {
-            console.error(err);
-        }
+        var newRow = title + ", " + writer+ ", " + category+ ", " + price + newLine
+            //var Csv = parse(book,opts) + newLine;
+            fs.appendFile('Excel.csv', newRow, function (error) {
+                if(error){
+                    console.error(err);
+                }
+            });
+            if(err){
+                console.error(err);
+            }
     });
 
 }
@@ -61,13 +66,13 @@ exports.addExcelData = (req, res) => {
             res.json(jsonObj);
 
             var excelCount = Object.keys(jsonObj).length;
-            console.log(excelCount);
+            //console.log(excelCount);
 
             Book.find()
                 .then(book => {
                     //res.json(book)
                     dbCount = Object.keys(book).length;
-                    console.log(dbCount);
+                    //console.log(dbCount);
                     jsonObj = jsonObj.slice(dbCount, excelCount)
                     Book.insertMany(jsonObj, (err, data) => {
 
