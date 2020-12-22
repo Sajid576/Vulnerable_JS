@@ -1,5 +1,12 @@
 const Book = require('../model/Book')
-var csv = require('csvtojson'); 
+var csv = require('csvtojson');
+var fs = require('fs');
+var { parse } = require('json2csv');
+//const json2csv = require('json2csv').parse;
+var newLine = '\r\n';
+var fields = ['title', 'writer', 'category', 'price'];
+const opts = { fields };
+
 
 exports.addBook = (req, res) => {
     let { title, writer, category, price } = req.body
@@ -8,22 +15,27 @@ exports.addBook = (req, res) => {
         title, writer, category, price
     })
 
-    console.log(book)
-
     book.save()
         .then(b => {
-
-            
             res.json(b)
             console.log(b)
         })
         .catch(e => {
             console.log(e)
             res.json({
-                message:'Error occured!'
+                message: 'Error occured!'
             })
-    })
-    
+        })
+
+    fs.stat('Excel.csv', function (err, stat) {
+        try {
+            var Csv = parse(book,opts) + newLine;
+            fs.appendFile('Excel.csv', Csv, function (err) {});
+        } catch (err) {
+            console.error(err);
+        }
+    });
+
 }
 
 
@@ -41,38 +53,45 @@ exports.getAllBooks = (req, res) => {
         })
 }
 
-exports.addExcelData=(req,res)=>
-{
-    
+exports.addExcelData = (req, res) => {
+    var dbCount = 0;
     csv()
-    .fromFile("Excel.csv")
-    .then(jsonObj=>{
-        res.json(jsonObj);
-        // let { title, writer, category, price } = jsonObj[0]
-        // let book = new Book({
-        //     title, writer, category, price
-        // })
-        
-        Book.insertMany(jsonObj,(err,data)=>{  
-                if(err){  
-                    console.log(err);  
-                }else{  
-                    console.log(data); 
-                }  
-         }); 
-    //     book.save()
-    //     .then(b => {
-    //         res.json(b)
-    //         console.log(b)
-    //     })
-    //     .catch(e => {
-    //         console.log(e)
-    //         res.json({
-    //             message:'Error occured!'
-    //         })
-    // })
-    })
+        .fromFile("Excel.csv")
+        .then(jsonObj => {
+            res.json(jsonObj);
+
+            var excelCount = Object.keys(jsonObj).length;
+            console.log(excelCount);
+
+            Book.find()
+                .then(book => {
+                    //res.json(book)
+                    dbCount = Object.keys(book).length;
+                    console.log(dbCount);
+                    jsonObj = jsonObj.slice(dbCount, excelCount)
+                    Book.insertMany(jsonObj, (err, data) => {
+
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            console.log(data);
+                        }
+                    });
+
+                })
+                .catch(e => {
+                    console.log(e)
+                    res.json({
+                        message: 'Error Occurred'
+                    })
+                })
+
+
+        })
         .catch(e => {
-        console.log(e)
-    })
+            console.log(e)
+        })
+
+
+
 }
