@@ -3,8 +3,10 @@ const router  = express.Router();
 
 const booksController=require('../controller/booksController');
 
-router.post('/addNewBook',booksController.addBook);
-router.get('/allBooks',booksController.getAllBooks);
-router.post('/addExcelData',booksController.addExcelData)
+router.post('/addNewBookToMongo',booksController.addBookToMongo);
+
+router.get('/allBooksFromMongo',booksController.getAllBooksFromMongo);
+
+router.post('/addExcelData',booksController.addExcelData);
 
 module.exports=router;

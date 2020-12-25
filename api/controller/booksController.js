@@ -1,25 +1,23 @@
 const Book = require('../model/Book')
 var csv = require('csvtojson');
 var fs = require('fs');
-//var { parse } = require('json2csv');
-//const json2csv = require('json2csv').parse;
 var newLine = '\r\n';
-var fields = ['title', 'writer', 'category', 'price'];
-//var fields = [, , , ];
-//const opts = { fields };
+var ObjectId = require('mongodb').ObjectID;
 
-
-exports.addBook = (req, res) => {
+exports.addBookToMongo = (req, res) => {
     let { title, writer, category, price } = req.body
 
+    let id = new ObjectId();
+
     let book = new Book({
+        _id: new ObjectId(id),
         title, writer, category, price
     })
 
     book.save()
         .then(b => {
             fs.stat('Excel.csv', function (err, stat) {
-                var newRow = title + ", " + writer+ ", " + category+ ", " + price + newLine
+                var newRow =id+", "+ title + ", " + writer+ ", " + category+ ", " + price + newLine
                     //var Csv = parse(book,opts) + newLine;
                     fs.appendFile('Excel.csv', newRow, function (error) {
                         if(error){
@@ -50,7 +48,7 @@ exports.addBook = (req, res) => {
 }
 
 
-exports.getAllBooks = (req, res) => {
+exports.getAllBooksFromMongo = (req, res) => {
     Book.find()
         .then(book => {
             res.json(book)

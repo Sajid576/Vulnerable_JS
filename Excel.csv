@@ -1,5 +1,2 @@
-title, writer, category, price
-Harry Potter,J.K.R,Magic,500
-English For Today, Board, Education, 100
-Al Quran, Allah, Islam, 99999
-The Alchemist, BukhPaulo Coelhoari, Novel, 100
+id,title, writer, category, price
+5fe5c578bcb330399c2facba, C programming, lel, programming, 200

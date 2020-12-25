@@ -70,7 +70,7 @@ Response list of Json Object:
 
 1) Add new book to the database and excel:
 ```
- POST /bookAPI/addNewBook
+ POST /bookAPI/addNewBookToMongo
 ```
 ```
 Request Json Object:
@@ -89,7 +89,7 @@ Response Json Object:
 ```
 2) Get all books from the database:
 ```
-GET  /bookAPI/allBooks
+GET  /bookAPI/allBooksFromMongo
 ```
 ```
 Response list of Json objects:
@@ -103,7 +103,7 @@ Response list of Json objects:
 ```
 3) Add updated Excel rows to the database:
 ```
-GET  /bookAPI/addExcelData
+POST  /bookAPI/addExcelData
 ```
 ```
 Response list of Json objects:
