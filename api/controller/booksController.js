@@ -18,8 +18,25 @@ exports.addBook = (req, res) => {
 
     book.save()
         .then(b => {
-            res.json(b)
-            console.log(b)
+            fs.stat('Excel.csv', function (err, stat) {
+                var newRow = title + ", " + writer+ ", " + category+ ", " + price + newLine
+                    //var Csv = parse(book,opts) + newLine;
+                    fs.appendFile('Excel.csv', newRow, function (error) {
+                        if(error){
+                            console.error(err);
+                            res.json(err);
+                        }
+                        else{
+                            console.log(b);
+                            res.json(b);
+                            
+                        }
+                        
+                    });
+                    
+            });
+
+            
         })
         .catch(e => {
             console.log(e)
@@ -28,18 +45,7 @@ exports.addBook = (req, res) => {
             })
         })
 
-    fs.stat('Excel.csv', function (err, stat) {
-        var newRow = title + ", " + writer+ ", " + category+ ", " + price + newLine
-            //var Csv = parse(book,opts) + newLine;
-            fs.appendFile('Excel.csv', newRow, function (error) {
-                if(error){
-                    console.error(err);
-                }
-            });
-            if(err){
-                console.error(err);
-            }
-    });
+    
 
 }
 
@@ -63,7 +69,7 @@ exports.addExcelData = (req, res) => {
     csv()
         .fromFile("Excel.csv")
         .then(jsonObj => {
-            res.json(jsonObj);
+           
 
             var excelCount = Object.keys(jsonObj).length;
             //console.log(excelCount);
@@ -78,8 +84,10 @@ exports.addExcelData = (req, res) => {
 
                         if (err) {
                             console.log(err);
+                            res.json(err);
                         } else {
                             console.log(data);
+                            res.json(data);
                         }
                     });
 
