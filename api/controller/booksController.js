@@ -1,4 +1,4 @@
-const Book = require('../model/Book')
+const Book = require('../model/Book');
 var csv = require('csvtojson');
 var fs = require('fs');
 var newLine = '\r\n';
@@ -13,10 +13,11 @@ exports.addBookToMongo = (req, res) => {
         _id: new ObjectId(id),
         title, writer, category, price
     })
-
+    console.log("inserting data into MongoDB");
     book.save()
         .then(b => {
             fs.stat('Excel.csv', function (err, stat) {
+                console.log("inserting data into CSV");
                 var newRow =id+", "+ title + ", " + writer+ ", " + category+ ", " + price + newLine
                     //var Csv = parse(book,opts) + newLine;
                     fs.appendFile('Excel.csv', newRow, function (error) {
@@ -63,45 +64,43 @@ exports.getAllBooksFromMongo = (req, res) => {
 }
 
 exports.addExcelData = (req, res) => {
-    var dbCount = 0;
-    csv()
-        .fromFile("Excel.csv")
-        .then(jsonObj => {
-           
+    let { title, writer, category, price } = req.body
 
-            var excelCount = Object.keys(jsonObj).length;
-            //console.log(excelCount);
+    let id = new ObjectId();
 
-            Book.find()
-                .then(book => {
-                    //res.json(book)
-                    dbCount = Object.keys(book).length;
-                    //console.log(dbCount);
-                    jsonObj = jsonObj.slice(dbCount, excelCount)
-                    Book.insertMany(jsonObj, (err, data) => {
-
-                        if (err) {
-                            console.log(err);
-                            res.json(err);
-                        } else {
-                            console.log(data);
-                            res.json(data);
-                        }
-                    });
-
-                })
-                .catch(e => {
-                    console.log(e)
-                    res.json({
-                        message: 'Error Occurred'
-                    })
-                })
-
-
-        })
-        .catch(e => {
-            console.log(e)
-        })
+    let book = new Book({
+        _id: new ObjectId(id),
+        title, writer, category, price
+    })
+    fs.stat('Excel.csv', function (err, stat) {
+        console.log("inserting data into CSV");
+        var newRow =id+", "+ title + ", " + writer+ ", " + category+ ", " + price + newLine
+            //var Csv = parse(book,opts) + newLine;
+            fs.appendFile('Excel.csv', newRow, function (error) {
+                if(error){
+                    console.error(err);
+                    res.json(err);
+                }
+                else{
+                    console.log("inserting data into MongoDB");
+                    book.save()
+                        .then(b => {
+                            console.log(b)
+                            res.json(b)
+                        })
+                        .catch(e => {
+                            console.log(e)
+                            res.json({
+                                message: 'Error occured!'
+                            })
+                        })
+                    
+                }
+                
+            });
+            
+    });
+   
 
 
 

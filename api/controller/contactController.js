@@ -41,7 +41,7 @@ exports.storeContactData=(req,res,next)=>
                         data
                     });
                 });
-                pool.end();
+               
             }
             
         
@@ -68,7 +68,7 @@ exports.storeContactData=(req,res,next)=>
                             contact
                         })
                         //console.log(result);
-                        pool.end();
+                       
                     }
                     
                 });
