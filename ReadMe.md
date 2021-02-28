@@ -1,14 +1,11 @@
 ## Project Structure:
-**PostgreSQL** , **MongoDB**  and **CSV** - these 2  databases and 1 csv file are used for implementing materialized view.
+**PostgreSQL** , **MongoDB**  and **CSV** - these 2  databases and 1 csv file are used in this project.
 
 ## Plan:
-<img width="946" alt="plan" src="https://user-images.githubusercontent.com/36130772/102591096-ae6a2580-413b-11eb-8561-7765b6c16f25.png">
+- Make separate modules for making bunch of vulnerable/non-vulnerable functions so that we don't get merge conflicts.
+- Firstly we will build vulnerable functions for SQLI attack ,then for No-SQLI attack and so on.
 
-Database-1=postgreSQL
 
-Database-2=MongoDB
-
-Database-3=CSV
 
 
 ## Project Installation
