@@ -1,12 +1,12 @@
 
 
 
-app.get('/posts/:id',(req, res) => {
+exports.getItems=(req, res) =>{
     const query='SELECT * FROM ITEMS WHERE ID ='+req.params.id+';';
     Database.run(query,(err, result)=>{
         res.json(result);
     })
-})
+}
 
 /**
  * ID=1
