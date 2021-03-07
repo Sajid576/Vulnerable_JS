@@ -1,5 +1,6 @@
 
 
+
 app.get('/posts/:id',(req, res) => {
     const query='SELECT * FROM ITEMS WHERE ID ='+req.params.id+';';
     Database.run(query,(err, result)=>{

@@ -7,8 +7,8 @@ const app = express();
 var multer = require('multer');  
 //var bodyParser  = require('body-parser'); 
 
-const mongo=require('./api/model/mongoose_connection')
-const postgres =require('./api/model/postgresql_connection')
+const mongo=require('./api/Config/mongoose_connection')
+const postgres =require('./api/Config/postgresql_connection')
 
 
 //Using Middleware from Middlewares directory
@@ -44,21 +44,7 @@ mongo.mongoose
         console.log(e)
     })
 
-// var csvModel = require('./api/model/Book'); 
 
-// var csv = require('csvtojson');  
-// csv()
-// .fromFile("Excel.csv")
-// .then((jsonObj)=>{
-//     console.log(jsonObj);
-//     csvModel.insertMany(jsonObj,(err,data)=>{  
-//             if(err){  
-//                 console.log(err);  
-//             }else{  
-//                 console.log(data); 
-//             }  
-//      }); 
-// });
 
 
 

@@ -1,5 +1,5 @@
 const ContactModel=require('../model/Contact');
-const pool =require('../model/postgresql_connection');
+const pool =require('../Config/postgresql_connection');
 var ObjectId = require('mongodb').ObjectID;
 
 
