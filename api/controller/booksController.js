@@ -1,3 +1,4 @@
+
 const Book = require('../model/Book');
 var csv = require('csvtojson');
 var fs = require('fs');
@@ -43,8 +44,6 @@ exports.addBookToMongo = (req, res) => {
                 message: 'Error occured!'
             })
         })
-
-    
 
 }
 
