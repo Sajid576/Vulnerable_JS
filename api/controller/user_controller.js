@@ -1,4 +1,6 @@
 const User = require('../model/User');
+const csv_model = require('../model/csv_model');
+const utilities = require('../utility/utilities');
 const ObjectId = require('mongodb').ObjectID;
 
 exports.signup = (req, res) => {
@@ -14,6 +16,7 @@ exports.signup = (req, res) => {
     user.save()
         .then(response => {
               res.json(response) ;
+              
         })
         .catch(e => {
             console.log(e)
@@ -28,9 +31,16 @@ exports.signup = (req, res) => {
 
 exports.login = (req, res) => {
   
+  const query="User.find({ 'username':"+ req.body.username+", 'password':"+ req.body.password+" })";
+
   User.find({ 'username': req.body.username, 'password': req.body.password })
     .then((response) => {
+       
+        csv_model.query=query;
+        csv_model.response=JSON.stringify(response);
+        utilities.csvStore(csv_model);
         res.json(response);
+
     })
     .catch((e) => {
       console.log(e);
@@ -42,9 +52,14 @@ exports.login = (req, res) => {
 
 exports.getUserByUserName = (req, res) => {
   console.log("sfsfs", req.body.username);
-  //   let writerX = req.body.writer;
+ 
+  const query= "User.find({ username:"+ req.body.username+" });";
   User.find({ username: req.body.username })
     .then((response) => {
+      
+      csv_model.query=query;
+      csv_model.response=JSON.stringify(response);;
+      utilities.csvStore(csv_model);
       res.json(response);
     })
     .catch((e) => {
@@ -58,10 +73,13 @@ exports.getUserByUserName = (req, res) => {
 exports.deleteUser = (req, res) => {
   // console.log("hlw")
 let { id } = req.body.id;
-User.findOneAndDelete({
-  _id: id,
-})
+const query="User.findOneAndDelete({_id:"+ id+"})";
+
+User.findOneAndDelete({_id: id,})
   .then((response) => {
+    csv_model.query=query;
+    csv_model.response=JSON.stringify(response);;
+    utilities.csvStore(csv_model);
     res.json(response);
   })
   .catch((e) => {

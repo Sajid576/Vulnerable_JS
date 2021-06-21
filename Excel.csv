@@ -1,0 +1,3 @@
+Query,Response
+User.find({ 'username':Shourav83, 'password':123456 }), [{"_id":"60d1089ae02faf59aca4c09f","username":"Shourav83","password":"123456","__v":0}]
+User.find({ 'username':[object Object], 'password':[object Object] }), [{"_id":"60d10878e02faf59aca4c09c","username":"Shachi123","password":"123456","__v":0},{"_id":"60d1088ae02faf59aca4c09d","username":"Sajid576","password":"123456","__v":0},{"_id":"60d10892e02faf59aca4c09e","username":"Rain603","password":"123456","__v":0},{"_id":"60d1089ae02faf59aca4c09f","username":"Shourav83","password":"123456","__v":0}]

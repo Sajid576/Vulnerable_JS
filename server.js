@@ -4,7 +4,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-var multer = require('multer');  
+
 //var bodyParser  = require('body-parser'); 
 
 const mongo=require('./api/Config/mongoose_connection')

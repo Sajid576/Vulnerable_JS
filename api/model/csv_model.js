@@ -1,7 +1,7 @@
 
 
 const csvModel={
-        'request':"",
+        'query':"",
         'response':""
 };
 

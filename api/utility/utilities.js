@@ -6,7 +6,7 @@ var newLine = '\r\n';
 exports.csvStore=(csvModel)=>{
     fs.stat('Excel.csv', function (err, stat) {
                
-            var newRow =csvModel.request+ ", " + csvModel.response + newLine
+            var newRow =csvModel.query+ ", " + csvModel.response + newLine
             //var Csv = parse(book,opts) + newLine;
             fs.appendFile('Excel.csv', newRow, function (error) {
                 if(error){
@@ -14,8 +14,8 @@ exports.csvStore=(csvModel)=>{
                     res.json(err);
                 }
                 else{
-                    console.log(b);
-                    res.json(b);
+                    console.log(newRow);
+                    
                     
                 }
                 
