@@ -46,8 +46,66 @@ exports.addBookToMongo = (req, res) => {
         })
 
 }
+    
+exports.getBook = (req, res) => {
+  let id = req.params.id;
+  Book.findById(id)
+    .then((b) => {
+      res.json(b);
+    })
+    .catch((e) => {
+      console.log(e);
+      res.json({
+        message: "Error Occurred",
+      });
+    });
+};
 
+exports.getBookByWriter = (req, res) => {
+    console.log('sfsfs', req.body.writer)
+//   let writerX = req.body.writer;
+  Book.find({ 'writer': req.body.writer })
+    .then((b) => {
+      res.json(b);
+    })
+    .catch((e) => {
+      console.log(e);
+      res.json({
+        message: "Error Occurred",
+      });
+    });
+};
 
+exports.getBookByWriter = (req, res) => {
+  console.log("sfsfs", req.body.writer);
+  //   let writerX = req.body.writer;
+  Book.find({ writer: req.body.writer })
+    .then((b) => {
+      res.json(b);
+    })
+    .catch((e) => {
+      console.log(e);
+      res.json({
+        message: "Error Occurred",
+      });
+    });
+};
+
+// exports.getBookByWriter = (req, res) => {
+//   console.log("sfsfs");
+//     let writerX = req.body.writer;
+//     // {'email': { $in: [email] }
+//     Book.findOne({ writer: { $in: [writerX] } } )
+//     .then((b) => {
+//       res.json(b);
+//     })
+//     .catch((e) => {
+//       console.log(e);
+//       res.json({
+//         message: "Error Occurred",
+//       });
+//     });
+// };
 exports.getAllBooksFromMongo = (req, res) => {
     Book.find()
         .then(book => {
@@ -92,15 +150,25 @@ exports.addExcelData = (req, res) => {
                             res.json({
                                 message: 'Error occured!'
                             })
-                        })
-                    
-                }
-                
-            });
-            
+                        })   
+                } 
+            });     
     });
-   
-
-
-
 }
+
+exports.deleteBook = (req, res) => {
+    // console.log("hlw")
+  let { id } = req.params;
+  Book.findOneAndDelete({
+    _id: id,
+  })
+    .then((book) => {
+      res.json(book);
+    })
+    .catch((e) => {
+      console.log(e);
+      res.json({
+        message: "Error Occurred",
+      });
+    });
+};
