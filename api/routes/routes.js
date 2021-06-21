@@ -1,14 +1,8 @@
-
-const contactApiRoute=require('./contactApiRoute');
-const bookApiRoute = require('./bookApiRoute');
+const user_route = require('./user_route');
 const routes=[
     {
-        path:'/contactAPI', 
-        handler: contactApiRoute
-    },
-    {
-        path:'/bookAPI', 
-        handler: bookApiRoute
+        path:'/userapi', 
+        handler: user_route
     },
     {
         path: '/',
