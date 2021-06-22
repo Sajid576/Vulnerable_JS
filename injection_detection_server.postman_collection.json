@@ -1,0 +1,288 @@
+{
+	"info": {
+		"_postman_id": "957e0fa0-fdc4-4645-af09-cb23eb9cb7b5",
+		"name": "injection_detection_server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Attacking",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": [
+						{
+							"name": "tautology",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":{\"$gt\":\"\"},\r\n    \"password\":{\"$gt\":\"\"}\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/userapi/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"userapi",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "342"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"156-52YyxAvfKOpIzJa4PszpGsgEDQQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 21 Jun 2021 21:58:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"_id\": \"60d10878e02faf59aca4c09c\",\n        \"username\": \"Shachi123\",\n        \"password\": \"123456\",\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"60d1088ae02faf59aca4c09d\",\n        \"username\": \"Sajid576\",\n        \"password\": \"123456\",\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"60d10892e02faf59aca4c09e\",\n        \"username\": \"Rain603\",\n        \"password\": \"123456\",\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"60d1089ae02faf59aca4c09f\",\n        \"username\": \"Shourav83\",\n        \"password\": \"123456\",\n        \"__v\": 0\n    }\n]"
+						},
+						{
+							"name": "tautology1",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":{\"$ne\":\"\"},\r\n    \"password\":{\"$ne\":\"\"}\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/userapi/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"userapi",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "342"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"156-52YyxAvfKOpIzJa4PszpGsgEDQQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 21 Jun 2021 22:04:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"_id\": \"60d10878e02faf59aca4c09c\",\n        \"username\": \"Shachi123\",\n        \"password\": \"123456\",\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"60d1088ae02faf59aca4c09d\",\n        \"username\": \"Sajid576\",\n        \"password\": \"123456\",\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"60d10892e02faf59aca4c09e\",\n        \"username\": \"Rain603\",\n        \"password\": \"123456\",\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"60d1089ae02faf59aca4c09f\",\n        \"username\": \"Shourav83\",\n        \"password\": \"123456\",\n        \"__v\": 0\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "detect sql injection",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"query\":\"select * from book where b_id='2323' \"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/sql_injection",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"sql_injection"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "detect sql injection",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"query\":\"bla bla bla\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/sql_injection",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"sql_injection"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "3"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.9"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 15 Jun 2021 12:55:55 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "SQL"
+				}
+			]
+		},
+		{
+			"name": "detect NoSql injection",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"query\":\"db.query(name:'sajid',password:'sdadasd34232');\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/nosql_injection",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"nosql_injection"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "detect NoSql injection",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/nosql_injection",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"nosql_injection"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "5"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/2.0.1 Python/3.8.9"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 15 Jun 2021 12:54:12 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "NoSQL"
+				}
+			]
+		}
+	]
+}
