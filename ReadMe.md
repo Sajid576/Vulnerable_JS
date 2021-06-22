@@ -32,3 +32,5 @@ Your server should be available at **localhost:5000** .... :)
 
 - [Elephant SQL website for hosting postgresql database](https://api.elephantsql.com/console/3f6ad4f0-8f78-49d4-9ff7-651a1d885eba/details)
 - [Blog for postgresql with nodejs](https://node-postgres.com/features/connecting)
+
+- [Steps for hacking MongoDB database in nodejs](https://scotch.io/@401/mongodb-injection-in-nodejs)
