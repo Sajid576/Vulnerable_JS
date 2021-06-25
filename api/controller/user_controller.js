@@ -1,4 +1,4 @@
-const User = require('../model/User');
+const User = require('../model/user');
 const csv_model = require('../model/csv_model');
 const utilities = require('../utility/utilities');
 const ObjectId = require('mongodb').ObjectID;
@@ -50,16 +50,18 @@ exports.login = (req, res) => {
     });
 };
 
-exports.getUserByUserName = (req, res) => {
-  console.log("sfsfs", req.body.username);
+exports.getUserByLength = (req, res) => {
  
   const query= "User.find({ username:"+ req.body.username+" });";
-  User.find({ username: req.body.username })
+  User.find({where: function(){
+            return this.age == 23
+              
+  } })
     .then((response) => {
       
       csv_model.query=query;
       csv_model.response=JSON.stringify(response);;
-      utilities.csvStore(csv_model);
+      //utilities.csvStore(csv_model);
       res.json(response);
     })
     .catch((e) => {
