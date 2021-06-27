@@ -1,5 +1,5 @@
 const User = require('../model/user');
-const csv_model = require('../model/csv_model');
+
 const utilities = require('../utility/utilities');
 const pool = require('../Config/postgresql_connection')
 
@@ -35,9 +35,10 @@ exports.login = (req, res) => {
         res.json(err.message);
       } else {
         
-        csv_model.query = query;
-        csv_model.response = JSON.stringify(result["rows"]);
-        utilities.csvStore(csv_model);
+        utilities.storeSQLCSV({
+            query: query,
+            response: result["rows"]
+        });
         res.status(200).json(result["rows"]);
       }
     }
@@ -56,9 +57,10 @@ exports.getUserByLength = (req, res) => {
   } })
     .then((response) => {
       
-      csv_model.query=query;
-      csv_model.response=JSON.stringify(response);;
-      //utilities.csvStore(csv_model);
+      utilities.storeSQLCSV({
+        query: query,
+        response: result["rows"]
+    });
       res.json(response);
     })
     .catch((e) => {
@@ -76,9 +78,10 @@ const query="User.findOneAndDelete({_id:"+ id+"})";
 
 User.findOneAndDelete({_id: id,})
   .then((response) => {
-    csv_model.query=query;
-    csv_model.response=JSON.stringify(response);;
-    utilities.csvStore(csv_model);
+    utilities.storeSQLCSV({
+      query: query,
+      response: result["rows"]
+  });
     res.json(response);
   })
   .catch((e) => {

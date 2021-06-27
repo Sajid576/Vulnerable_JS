@@ -1,5 +1,5 @@
-const user_route_Sql = require('./user_route_Sql');
-const user_route_NoSQL = require("./user_route_NoSQL");
+const user_route_Sql = require('./user_route_sql');
+const user_route_NoSQL = require("./user_route_nosql");
 const routes = [
   {
     path: "/sql/userapi",

@@ -1,5 +1,4 @@
 const User = require('../model/user');
-const csv_model = require('../model/csv_model');
 const utilities = require('../utility/utilities');
 const ObjectId = require('mongodb').ObjectID;
 
@@ -36,9 +35,10 @@ exports.login = (req, res) => {
   User.find({ 'username': req.body.username, 'password': req.body.password })
     .then((response) => {
        
-        csv_model.query=query;
-        csv_model.response=JSON.stringify(response);
-        utilities.csvStore(csv_model);
+      utilities.storeNoSQLCSV({
+        query: query,
+        response: result["rows"]
+    });
         res.json(response);
 
     })
@@ -59,9 +59,10 @@ exports.getUserByLength = (req, res) => {
   } })
     .then((response) => {
       
-      csv_model.query=query;
-      csv_model.response=JSON.stringify(response);;
-      //utilities.csvStore(csv_model);
+      utilities.storeNoSQLCSV({
+        query: query,
+        response: result["rows"]
+    });
       res.json(response);
     })
     .catch((e) => {
@@ -79,9 +80,10 @@ const query="User.findOneAndDelete({_id:"+ id+"})";
 
 User.findOneAndDelete({_id: id,})
   .then((response) => {
-    csv_model.query=query;
-    csv_model.response=JSON.stringify(response);;
-    utilities.csvStore(csv_model);
+    utilities.storeNoSQLCSV({
+      query: query,
+      response: result["rows"]
+  });
     res.json(response);
   })
   .catch((e) => {
