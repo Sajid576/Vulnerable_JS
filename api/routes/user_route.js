@@ -10,5 +10,4 @@ router.delete("/deleteUser", user_controller.deleteUser);
 router.get('/allUser',user_controller.getAllUsers);
 
 
-
 module.exports=router;

@@ -5,7 +5,7 @@
 ## Plan:
 
 - We make some routes and controllers for executing SQL/NoSQL query with the database.
-
+- Requests and responses are stored in the CSV file.
 - Then we connect a HTML page with the node project then send malicious code from the form of the HTML page.
 
 ## Project Installation
