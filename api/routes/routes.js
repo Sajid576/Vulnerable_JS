@@ -11,7 +11,7 @@ const routes = [
   },
   {
     path: "/",
-    handler: () => {
+    handler: (req, res) => {
       res.json({
         message: "Hello Developer!!!!!!!!!",
       });
