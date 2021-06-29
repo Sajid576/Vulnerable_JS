@@ -37,8 +37,8 @@ exports.login = (req, res) => {
        
       utilities.storeNoSQLCSV({
         query: query,
-        response: result["rows"]
-    });
+        response: response
+      });
         res.json(response);
 
     })
@@ -61,8 +61,8 @@ exports.getUserByLength = (req, res) => {
       
       utilities.storeNoSQLCSV({
         query: query,
-        response: result["rows"]
-    });
+        response: response,
+      });
       res.json(response);
     })
     .catch((e) => {
@@ -82,8 +82,8 @@ User.findOneAndDelete({_id: id,})
   .then((response) => {
     utilities.storeNoSQLCSV({
       query: query,
-      response: result["rows"]
-  });
+      response: response
+    });
     res.json(response);
   })
   .catch((e) => {
