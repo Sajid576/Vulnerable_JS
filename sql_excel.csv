@@ -2,3 +2,8 @@ Query,Response
 select * from Users where username='admin' and password='', []
 select * from Users where username='sajid' and password='', []
 select * from Users where username='sajid' and password='123456', [{"uid":"5fde76b931639e0610f466fa","username":"sajid","password":"123456"}]
+select * from Users where username='sajid' and password='123456', [{"uid":"5fde76b931639e0610f466fa","username":"sajid","password":"123456"}]
+select * from Users where username='sajid' and password='123456', [{"uid":"5fde76b931639e0610f466fa","username":"sajid","password":"123456"}]
+select * from Users where username='sajid' and password='123456', [{"uid":"5fde76b931639e0610f466fa","username":"sajid","password":"123456"}]
+select * from Users where username='105 OR 1=1' and password='105 OR 1=1', []
+select * from Users where username='sajid' and password='123456', [{"uid":"5fde76b931639e0610f466fa","username":"sajid","password":"123456"}]

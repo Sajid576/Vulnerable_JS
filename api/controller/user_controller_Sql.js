@@ -6,10 +6,10 @@ const pool = require('../Config/postgresql_connection')
 exports.signup = (req, res) => {
     const id = Math.floor(Math.random() * 1000);
     console.log("inserting data into Postgresql");
-    const query = "'" + id + "','" + username + "','" + password + "'";
+    const query = "'" + id + "','" + req.body.username + "','" + req.body.password + "'";
     console.log(query);
     pool.query(
-      "INSERT INTO Product (productId,title,unitPrice) VALUES (" + query + ")",
+      "INSERT INTO Users (uid,username,password) VALUES (" + query + ")",
       function (err, result, fields) {
         if (err) {
           console.log("error running query", err);
@@ -24,8 +24,9 @@ exports.signup = (req, res) => {
 
 
 exports.login = (req, res) => {
-  // select * from Users where username='sajid' and password='123456' ;
-  const query="select * from Users where username='"+req.body.username+"' and password='"+req.body.password+"'"
+  const query = "select * from Users where username='" + req.body.username + "' and password='" + req.body.password + "'"
+  // const username = "" or ""="";
+  // const query = "select * from Users where username='" + username + "' and password='" + username + "'"
   console.log(query);
   pool.query(
     query,

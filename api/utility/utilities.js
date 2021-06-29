@@ -7,7 +7,7 @@ exports.storeNoSQLCSV=(csvModel)=>{
     const fileName= 'nosql_excel.csv';
     fs.stat(fileName, function (err, stat) {
                
-            var newRow =csvModel.query+ ", " + Json.stringify(csvModel.response) + newLine
+            var newRow =csvModel.query+ ", " + JSON.stringify(csvModel.response) + newLine
             //var Csv = parse(book,opts) + newLine;
             fs.appendFile(fileName, newRow, function (error) {
                 if(error){
@@ -29,7 +29,7 @@ exports.storeSQLCSV=(csvModel)=>{
     const fileName= 'sql_excel.csv';
     fs.stat(fileName, function (err, stat) {
                
-            var newRow =csvModel.query+ ", " + Json.stringify( csvModel.response) + newLine
+            var newRow =csvModel.query+ ", " + JSON.stringify( csvModel.response) + newLine
             //var Csv = parse(book,opts) + newLine;
             fs.appendFile(fileName, newRow, function (error) {
                 if(error){
