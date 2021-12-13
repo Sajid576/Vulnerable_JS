@@ -31,8 +31,8 @@ exports.signup = (req, res) => {
 exports.login = (req, res) => {
   
   // const query="User.find({ 'username':"+JSON.stringify( req.body.username )+", 'password':"+ JSON.stringify(req.body.password)+" })";
-  const query="User.findOne({ 'username':"+JSON.stringify( req.body.username )+", 'password':"+ JSON.stringify(req.body.password)+" })";
-  User.findOne({ 'username': req.body.username, 'password': req.body.password })
+  const query="User.find({ 'username':"+JSON.stringify( req.body.username )+", 'password':"+ JSON.stringify(req.body.password)+" })";
+  User.find({ 'username': req.body.username, 'password': req.body.password })
     .then((response) => {
        
       utilities.storeNoSQLCSV({
@@ -50,13 +50,11 @@ exports.login = (req, res) => {
     });
 };
 
-exports.getUserByLength = (req, res) => {
+exports.getUser = (req, res) => {
  
   const query= "User.find({ username:"+ req.body.username+" });";
-  User.find({where: function(){
-            return this.age == 23
-              
-  } })
+  User.find({where: function() { 
+    return (this.username ==  req.body.username) }})
     .then((response) => {
       
       utilities.storeNoSQLCSV({
